@@ -1,4 +1,3 @@
-##Projet de Cryptographie en Java
 # Description
 
 Ce projet a été réalisé dans le cadre d’un travail pratique de cryptographie.
