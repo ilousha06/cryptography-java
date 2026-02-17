@@ -1,5 +1,5 @@
-###Projet de Cryptographie en Java
-## Description
+##Projet de Cryptographie en Java
+# Description
 
 Ce projet a été réalisé dans le cadre d’un travail pratique de cryptographie.
 Il a pour objectif de mettre en œuvre plusieurs techniques de chiffrement et de déchiffrement en Java.
