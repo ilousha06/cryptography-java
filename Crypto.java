@@ -172,19 +172,25 @@ public class Crypto
         /*=============================================================*/
        
         // Question 9 : attaque par texte clair connu
+        // On cherche à retrouver la clé utilisée pour le chiffrement XOR
         System.out.println("Recherche de la cle:");
-
+        
+        // Lecture du fichier chiffré
         String contenu = readFile("SECRETPAGE.htm");
+        
+        // Conversion du texte chiffré et du texte clair connu en bytes
+        byte[] bytesChiffres = strToByte(contenu);
+        byte[] header = strToByte("<html><head>");
+        
+        // Calcul de la clé avec le XOR sur les premiers caractères
+        for (int i = 0; i < header.length; i++) {
+            byte keyByte = (byte) (bytesChiffres[i] ^ header[i]);
+            System.out.print((char) keyByte);
+        }
+        
+        // Fin de l'affichage
+        System.out.println();
 
-          byte[] bytesChiffres = strToByte(contenu);
-          byte[] header = strToByte("<html><head>");
-
-        for (int i = 0; i < header.length; i++){
-       byte keyByte = (byte)(bytesChiffres[i] ^ header[i]);
-       System.out.print((char)keyByte);
-      }
-
-      System.out.println();
        
         /*=============================================================*/
     } // main()
