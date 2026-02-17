@@ -146,7 +146,8 @@ public class Crypto
                 'R','S','T','Y','I','J','X','D','L','E',
                 'G','W','U','A','B','F'
         };
-        System.out.println(subDecrypt("q3.txt", vKey));
+        System.out.println(subDecrypt("texte1.txt", vKey));
+        System.out.println(subDecrypt("texte2.txt", vKey));
 
         /*=============================================================*/
 
@@ -163,22 +164,28 @@ public class Crypto
         cryptXor("q6_clair.txt", "q6_chiffre.txt", "ABCD");
 
         /*=============================================================*/
-        
-        // Question 8 : déchiffrement du fichier chiffré 
-        // Le XOR est réversible, on utilise donc la même clé 
+       
+        // Question 8 : déchiffrement du fichier chiffré
+        // Le XOR est réversible, on utilise donc la même clé
         cryptXor("q6_chiffre.txt", "q6_dechiffre.txt", "ABCD");
-        
+       
         /*=============================================================*/
-        
-        // Question 9 : attaque par texte clair connu 
-        // On sait qu’un fichier HTML commence par "<html><head>" 
-        // On utilise donc cette chaîne comme clé pour retrouver la vraie clé 
-        cryptXor("q9.txt", "q9_clair.txt", "<html><head>"); 
-        
-        // Après le premier déchiffrement, on obtient la clé réelle "TRLK" 
-        // On relance alors le déchiffrement avec cette clé 
-        cryptXor("q9.txt", "q9_clair.txt", "TRLK");
-        
+       
+        // Question 9 : attaque par texte clair connu
+        System.out.println("Recherche de la cle:");
+
+        String contenu = readFile("SECRETPAGE.htm");
+
+          byte[] bytesChiffres = strToByte(contenu);
+          byte[] header = strToByte("<html><head>");
+
+        for (int i = 0; i < header.length; i++){
+       byte keyByte = (byte)(bytesChiffres[i] ^ header[i]);
+       System.out.print((char)keyByte);
+      }
+
+      System.out.println();
+       
         /*=============================================================*/
     } // main()
 } // Crypto
